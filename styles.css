@@ -1,0 +1,112 @@
+/* Base styles and color palette */
+:root {
+    --color-primary: #468A46;   /* Shia Shelves primary green */
+    --color-secondary: #66AA66; /* Shia Shelves secondary green */
+  }
+  
+  body {
+    font-family: sans-serif;
+    background: #FFF;
+    color: #333;
+    margin: 2em;
+  }
+  
+  h1 {
+    text-align: center;
+    color: var(--color-primary);
+    margin-bottom: 1.5em;
+  }
+  
+  /* Form layout */
+  #calculator {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  .form-group {
+    margin-bottom: 1.2em;
+    position: relative;
+  }
+  
+  .form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.3em;
+    color: #000;
+  }
+  
+  /* Subtitles below the labels */
+  .form-group .subtitle {
+    font-size: 0.9em;
+    color: #555;
+    margin-top: 0.3em;
+  }
+  
+  /* Currency symbol prefix styling for inputs */
+  .input-group {
+    position: relative;
+  }
+  
+  .input-group::before {
+    content: '$';               /* default currency symbol (original currency) */
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #555;
+    pointer-events: none;
+    font-size: 0.95em;
+  }
+  
+  .input-group.original input {
+    padding-left: 1.5em;        /* space for single '$' */
+  }
+  
+  .input-group.aud::before {
+    content: 'A$';              /* prefix for AUD currency */
+  }
+  
+  .input-group.aud input {
+    padding-left: 2em;         /* space for 'A$' */
+  }
+  
+  /* Input and select styles */
+  input[type="number"], select {
+    width: 100%;
+    padding: 8px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  input[type="number"]:focus, select:focus {
+    outline: 2px solid var(--color-secondary);
+    outline-offset: 2px;
+    border-color: var(--color-secondary);
+  }
+  
+  /* Result display section */
+  #result-area {
+    display: none;  /* hidden until inputs are valid */
+    margin-top: 1.5em;
+    padding: 1em;
+    border: 1px solid var(--color-secondary);
+    background: #E0EEE0;  /* very light green background */
+    border-radius: 4px;
+  }
+  
+  #result-area p {
+    margin: 0 0 0.5em;
+    font-size: 1.1em;
+    color: var(--color-primary);
+  }
+  
+  #result-area span#adjustedPriceValue {
+    font-weight: bold;
+  }
+  
+  #result-area label {
+    font-weight: bold;
+    margin-right: 0.5em;
+  }

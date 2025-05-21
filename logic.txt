@@ -1,0 +1,124 @@
+What data is required?
+
+- Item Cost (Original Currency)
+- Total Cost Of Items (Original Currency)
+- Total Paid (AUD)
+
+what data is interpreted from the required fields of data?
+- Item Cost (AUD)
+
+What data can be inputted to expand our understanding?
+- total paid (Original Currency)
+
+
+
+
+
+Order Variables:
+
+item:
+- Individual Price (Original Currency) - MUST BE INPUTTED
+- Individual Price (AUD) - MUST BE INTERPRETED
+- Quantity - OPTIONALLY INPUTTED 
+- Total cost - OPTIONALLY INTERPRETED
+- Discount Applied (Original Currency) - OPTIONALLY INPUTTED
+- Discount Applied (AUD) - MUST BE INTERPRETED
+- Shipping Cost (Original Currency) - CAN BE INTERPRETED
+- Shipping Cost (AUD) - MUST BE INTERPRETED
+- Additional Fees (Original Currency) - CAN BE INTERPRETED
+- Additional Fees (AUD) - MUST BE INTERPRETED
+- Weight (in KG) - OPTIONALLY INPUTTED (MUST BE INPUTTED FOR WEIGHT BASED SHIPPING CALCULATION)
+- Item Cost (AUD) - MUST BE INTERPRETED
+
+Order:
+- total amount of items - OPTIONALLY INPUTTED (MUST BE INPUTTED FOR AVERAGE SHIPPING CALCULATION)
+- total cost of items (Original Currency) - MUST BE INPUTTED
+- Total cost of items (AUD) - CAN BE INTERPRETED
+- total weight of items - OPTIONALLY INPUTTED (MUST BE INPUTTED FOR WEIGHT BASED SHIPPING CALCULATION)
+- total Discount (Original Currency) - CAN BE INPUTTED (DEFAULT TO $0)
+- Total Discount (AUD) - CAN BE INTERPRETED
+- discount rate applied - CAN BE INTERPRETED
+- total Shipping Cost (Original Currency) - MUST BE INPUTTED (DEFAULT TO $0)
+- Total Shipping Cost (AUD) - CAN BE INTERPETED 
+- total GST (Original Currency) - CAN BE INTERPRETED
+- Total GST (AUD) - CAN BE INTERPRETED
+- GST INCLUSIVE (BOOLEAN) - CAN BE INPUTTED (DEFAULT TO YES)
+- Total Extra Fees (Original Currency) - CAN BE INPUTTED / INTERPRETED
+- Total Extra Fees (AUD) - CAN BE INPUTTED / INTERPRETED
+- Total Paid (Original Currency) - CAN BE INTERPRETED
+- Total Paid (AUD) - MUST BE INPUTTED
+
+Suggestions:
+- Profit Margin Percentage - MUST BE INPUTTED
+- Minimum Profit - CAN BE INPUTTED
+- Maximum Profit - CAN BE INPUTTED
+
+
+BASIC LOGIC 
+
+How much did the item cost?
+- $__
+
+how much did all the items cost?
+- $___
+
+how much was the total discount?
+- $___
+
+how much did you pay (MUST BE AUD)?
+- $___
+
+
+How much did each item cost us to buy?
+
+step 1: 
+How much did we pay for the items with the discount included? 
+- discounted items cost = total items cost - total discount
+
+step 2:
+how much did we pay for the item individually? 
+- discount rate (percentage) = total discount / all items cost
+- item cost with discount = item cost * (1 - discount rate)
+
+step 3:
+how much extra dollars did we have to pay?
+- (optional) dollar difference = total paid - discounted items cost 
+how much do we multiply the discounted cost to match how much we paid?
+- dollar difference rate = total paid / discounted items cost 
+
+step 4:
+how much did each item cost us to buy?
+final cost of item = item cost with discount * dollar difference rate
+
+example:
+
+How much did the item cost?
+- $10
+
+how much did all the items cost?
+- $100
+
+how much was the total discount?
+- $20
+
+how much did you pay (MUST BE AUD)?
+- $200
+
+step 1: 
+How much did we pay for the items with the discount included? 
+- discounted items cost = $100 - $20 = $80
+
+step 2:
+how much did we pay for the item individually? 
+- discount rate (percentage) = $20 / $100 = 0.2 = 20%
+- item cost with discount = $10 * (1 - 0.2) = $10 * 0.8 = $8
+
+step 3:
+how much extra dollars did we have to pay?
+- (optional) dollar difference = $200 - $80 = $120
+how much do we multiply the discounted cost to match how much we paid?
+- dollar difference rate = $200 / $80 = 2.5
+
+step 4:
+how much did each item cost us to buy?
+final cost of item = $8 * 2.5 = $20

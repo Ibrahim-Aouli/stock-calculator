@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Price Adjustment Calculator</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <h1>Price Adjustment Calculator</h1>
+  <div id="calculator">
+    <!-- Order Cost (original currency) -->
+    <div class="form-group">
+      <label for="orderCost">Order Cost</label>
+      <p class="subtitle">Enter the original total cost of the order (excluding shipping or extra fees). The items in the order must add up to this value.</p>
+      <div class="input-group original">
+        <input id="orderCost" type="number" step="0.01" min="0.01" placeholder="e.g. 100.00" required />
+      </div>
+    </div>
+
+    <!-- Final Cost in AUD (including shipping/fees) -->
+    <div class="form-group">
+      <label for="finalCostAud">Final Cost in AUD</label>
+      <p class="subtitle">Enter the total amount paid in AUD, including shipping and any additional fees.</p>
+      <div class="input-group aud">
+        <input id="finalCostAud" type="number" step="0.01" min="0.01" placeholder="e.g. 150.00" required />
+      </div>
+    </div>
+
+    <!-- Individual Item Cost (original currency) -->
+    <div class="form-group">
+      <label for="itemCost">Individual Item Cost</label>
+      <p class="subtitle">Enter the original cost of the individual item in the order’s original currency (before converting to AUD).</p>
+      <div class="input-group original">
+        <input id="itemCost" type="number" step="0.01" min="0.01" placeholder="e.g. 20.00" required />
+      </div>
+    </div>
+
+    <!-- Result Display Section -->
+    <div id="result-area">
+      <p>Final Item Cost (AUD): <span id="adjustedPriceValue">$0.00</span></p>
+      <label for="decimalPlaces">Decimal places:</label>
+      <select id="decimalPlaces">
+        <option value="2" selected>2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+      </select>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
